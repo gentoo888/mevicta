@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>◣◢ Wortmeister/Woro</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html"><div class="logo">◣◢</div></a>
+    <div id="hamburger" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="navLinks" class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="project.html" class="nav-link">Projects</a></li>
+      <li><a href="aboutme.html">About Me</a></li>
+      <li><a href="blogs.html">Learning Journal</a></li>
+    </ul>
+  </nav>
+
+  <main class="about-content">
+      <h2>Metario</h2>
+      <p>
+        I joined a competition with classmates for the 
+        <a href="https://www.spaceappschallenge.org/">NASA International Apps Challenge</a> 
+        hackathon, where I served as the sole programmer. Although our team didn't place, 
+        I learned a valuable lesson about presenting our work to the judges in person. 
+        Since then, I've decided to make this project open source for everyone to use.
+      </p>
+      <h3>Technical Details</h3>
+      <p>
+        Metario is written in Rust 🦀 and uses fundamental physics functions to calculate 
+        meteor impact information. I derived these functions from scientific data provided 
+        by my teammates. The application simulates meteor trajectories using a 2D model 
+        created with the egui library. (I initially attempted a 3D animation using the 
+        kiss3d library, but encountered technical issues and lacked time to complete it.) 
+        The simulator can compare results with historical events such as the Hiroshima bombing.
+      </p>
+
+      <h4>Libraries Used:</h4>
+      <ul>
+        <li>Egui</li>
+        <li>Color32</li>
+        <li>std::sync::{Arc, Mutex}</li>
+      </ul>
+      <h3>What I Learned</h3>
+      <ul>
+        <li>Improved my ability to read and interpret scientific data more effectively</li>
+        <li>Developed proficiency with egui, including color management and UI design</li>
+        <li>Enhanced my Rust programming skills</li>
+        <li>Gained practical experience with physics simulations and calculations</li>
+      </ul>
+      <h3>Future Improvements</h3>
+      <p>
+        The primary goal is to implement a 3D simulation to replace the current 2D model. 
+        Additionally, I plan to verify the physics calculations and review the scientific 
+        functions for accuracy.
+      </p>
+      <img src="images/metarioss.png" alt="Metario Application Screenshot">
+  </main>
+</body>
+</html>
+

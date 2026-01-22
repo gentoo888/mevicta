@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◣◢  LinuxHelper</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script> <!--Super Ninja's ready script-->
+</head>
+<body>
+    <nav>
+      <a href="index.html"><div class="logo">◣◢ </div></a>
+      <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="blogs.html">Learning Journal</a></li>
+
+      </ul>
+    </nav>
+    <div class="about-content">
+        <h3>GİKAL Wortmeister</h3>
+        <img src="images/wrtm.png" alt="Wortmeister" width="600">
+        <p>German vocabulary learning application - developed with Rust + egui/eframe.</p>
+        <h4>Features</h4>
+        <ul>
+            <li>Built-in word sets (Prepared, 9-10th grade)</li>
+            <li>Interactive game mode</li>
+            <li>Progress tracking (level system)</li>
+            <li>Auto-save</li>
+            <li>Built-in logo and resources</li>
+            <li>Manual word addition (TXT import support)</li>
+            <li>Random word selection</li>
+        </ul>
+        <h4>Technologies</h4>
+        <ul>
+            <li>Rust - Programming language</li>
+            <li>egui/eframe - GUI framework</li>
+            <li>serde/serde_json - JSON parsing</li>
+            <li>image - Visual management</li>
+            <li>rfd - File dialog</li>
+        </ul>
+        <h4>Notes</h4>
+        <ul>
+            <li>Words are embedded into binary at compile-time</li>
+            <li>Progress is saved to user_progress.json file</li>
+            <li>Words reaching level 5 are considered "memorized"</li>
+        </ul>
+    </div>

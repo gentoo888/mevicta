@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◣◢  LinuxHelper</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script> <!--Super Ninja's ready script-->
+</head>
+<body>
+    <nav>
+      <a href="index.html"><div class="logo">◣◢ </div></a>
+      <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="blogs.html">Learning Journal</a></li>
+
+      </ul>
+    </nav>
+    <div class="about-content">
+        <h3>LinuxHelper</h3>
+        <img src="images/lh.png" alt="LinuxHelper" width="400">
+        <p>LinuxHelper (aka SelfLinux) is a great helper for Windows users' transition to Linux. To summarize its working logic: first it scans the user's computer's hardware, then classifies the collected hardware information and scores the computer. Afterwards it asks the user two personal questions and recommends 3 distributions (sometimes 2) to the user. The user selects a distribution, LinuxHelper downloads the selected distro's ISO from my Google Drive account and writes it to the user's USB. Finally, it restarts the user's computer with the recovery option and directs the user to the live USB (to the distro).</p>
+        <h4>Features</h4>
+        <ul>
+          <li>Hardware Detection: Automatically scans and analyzes your CPU, GPU, RAM and storage space</li>
+          <li>Smart Recommendations: Recommends Linux distributions based on your hardware capabilities and preferences</li>
+          <li>Visual Customization: Choose between performance-focused or visually attractive distributions</li>
+          <li>Usage Optimization: Customized recommendations for gaming, office work or software development</li>
+          <li>One-Click Installation: Downloads your selected distribution and writes directly to the USB drive</li>
+          <li>Seamless Experience: Manages the entire process from recommendation to restart</li>
+        </ul>
+        <h4>Installation</h4>
+        <ol>
+          <li>Download the project from the github site</li>
+          <li>Run the LinuxHelper.exe file with administrator privileges.</li>
+        </ol>
+        <h4>Note:</h4> 
+        <p>If the .exe file gives a library error, you need to install these 4 libraries: pillow (to show distro logos on the recommendation screen), tkinter (for GUI), Psutil (to query most of your hardware) and finally GPutil (to query your GPU model). You can install each one with the "pip install library" command.</p>
+        <h4>System requirements</h4>
+        <ul>
+          <li>Windows 8 or newer (required for advanced boot options)</li>
+          <li>Administrator privileges (required for USB writing)</li>
+          <li>Internet connection (to download ISO files)</li>
+          <li>USB drive (4GB+ recommended) for installation</li>
+          <li>Python 3.6+ (if running from source)</li>
+        </ul>
+        <h4>How does it work?</h4>
+        <ul>
+          <li>Hardware Analysis: LinuxHelper scans your system's CPU, GPU, RAM and storage</li>
+          <li>Preference Selection: Choose your usage needs and visual preferences</li>
+          <li>Recommendation Engine: Smart algorithm recommends the most suitable distributions</li>
+          <li>ISO Download: Downloads the ISO file of your selected distribution from my Google Drive server (Versions on Google Drive may be old, so update your system after downloading the distribution!!)</li>
+          <li>USB Writing: Creates a bootable USB drive with your selected distribution</li>
+          <li>Restart Option: Optionally reboot directly to BIOS/boot menu</li>
+        </ul>
+        <h4>Libraries Used</h4>
+        <ul>
+          <li>Python 3.x</li>
+          <li>Tkinter for GUI (Graphical user interface)</li>
+          <li>PyInstaller for executable file creation</li>
+          <li>Pillow for image support in application</li>
+          <li>GPutil for GPU querying</li>
+          <li>Hardware detection libraries (psutil)</li>
+          <li>PowerShell integration for system operations</li>
+        </ul>
+        <h4>Screenshots</h4>
+        <img src="images/lh1.png" alt="LinuxHelper" width="600">
+        <img src="images/lh2.png" alt="LinuxHelper" width="600">
+
+      </div>
+    <script src="script.js"></script>
+</body>
+</html>

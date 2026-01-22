@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>◣◢ Wortmeister/Woro</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <nav>
+      <a href="index.html"><div class="logo">◣◢ </div></a>
+      <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="blogs.html">Learning Journal</a></li>
+      </ul>
+    </nav>
+    <div class="about-content">
+      <h2>Wortmeister/Woro</h2>
+      <h3>The Purpose</h3>
+      <p>I wanted to create a word memorization app to help people learn foreign language vocabulary faster and more easily. Woro is compatible with every language because you add words manually. On the other hand, GİKAL Wortmeister is German-focused—its words come from our school's textbooks. You can also add words manually, but if you prefer a minimalist approach, Woro is the best option for you.</p>
+      
+      <h3>Technical Information</h3>
+      <p>I used the Rust programming language for both GİKAL Wortmeister and Woro. GİKAL Wortmeister is a Woro fork, which means I built Wortmeister using Woro as the foundation. Both applications use eframe::egui (for the GUI - Graphical User Interface), rand::Rng (for selecting random words), serde::{Deserialize, Serialize} (for parsing and reading .txt files), and std::fs libraries. The saved words are stored in a "words_data.json" file. I built three screens for the apps: AddWords, Game, and End screens. Both foreign and translation words are of string type.</p>
+      
+      <h3>How to Use It</h3>
+      
+      <h4>GİKAL Wortmeister</h4>
+      <p>If you're using this version of Woro, you're probably a student at my school. There are two options available: Hazırlık (Preparation) and 9-10.Sınıf (9th-10th Grade). Pick your grade, and you'll be redirected to the unit selection screen. Choose whichever unit you want to study. The app will start asking you random words from the chosen grade, and you'll enter their translations in Turkish. There are 5 levels. Each correct answer advances the word to the next level, and each incorrect answer moves it back to the previous level. Your goal is to get all the words to level 5. It usually takes time to get there, but trust me—if you believe in yourself and keep going, you'll master all the words by the time they reach level 5. When you finish the game, an end screen appears to celebrate your achievement. Note: You can also add words manually in any language, but as I mentioned, this version focuses on vocabulary from the textbook.</p>
+      
+      <h4>Woro</h4>
+      <p>This version is for general use. Start by entering the words you want to learn along with their foreign equivalents and translations in your language. You can also enter them in reverse if you want Woro to show you the translation in your language and ask for the foreign meaning. After confirming the words you've entered, you'll be taken to the game screen. Woro will start asking you random words from the list you provided. Each correct answer advances the word to the next level, and each incorrect answer moves it back to the previous level. Your goal is to get all the words to level 5. You'll be taken to the end screen when you reach your goal.</p>
+      
+      <h3>What I Learned from Making These Apps</h3>
+      <p>I learned how to parse .txt files in Rust, how to select random items, basic egui implementation, and fundamental Rust programming concepts.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>◣◢  LinuxHelper</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <nav>
+      <a href="index.html"><div class="logo">◣◢ </div></a>
+      <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="blogs.html">Learning Journal</a></li>
+      </ul>
+    </nav>
+    <div class="about-content">
+      <h3>LinuxHelper Learning Journal</h3>
+      <p>LinuxHelper is one of my first projects. It was written in Python, which is one of the most widely known languages. The graphical interface library is "Tkinter". My purpose in making this project was to facilitate Windows users' transition to Linux and open new doors for them.</p>
+      <h4>LinuxHelper is Born</h4>
+      <p>After going through a challenging but equally enjoyable learning process about Linux, installing the necessary software tools, and learning Python from the internet, I decided to start making real projects. For my project to be attention-grabbing, my area of interest also had to be attention-grabbing. I learned from some platforms (Reddit, YouTube..) that many Windows users today want to switch to Linux but don't have enough technical knowledge and need help, so I decided to develop software that would assist them. The idea for LinuxHelper was born then.</p>
+      <h3>Getting Started</h3>
+      <h4>Main Engine (main.py)</h4>
+      <img src="images/lh/main.jpeg" width="600" alt="Code">
+      <p>I started making LinuxHelper first with the main engine (main.py). This would contain LinuxHelper's pages, manage distro URLs, define the computer's operating system and download folder, download ISOs from my Google Drive account, write them to USB, and at the same time provide logs while doing this and apply basic operations like these. In short, it would create the software's skeleton. Operations would take place here. Without this code, LinuxHelper couldn't work because it was both calling the screens and performing the backend task to make LinuxHelper do its job. Some components of main.py are a measure-and-executor functions and many lists. Inside the executor functions, there are worker functions, and these functions are the functions that execute the operations.</p>
+    
+      <p>Main.py starts by showing the welcome screen to the user. Afterwards, the warning screen comes. Users who accept the warnings are shown the hardware screen, and at the same time, their computers are scanned and hardware is classified. Then, a screen asking personal preferences is shown to the user. Finally, with all this information, 2 or 3 distributions (distros) are recommended to the user. The user selects a distro, and main.py starts the real work by downloading the distro ISO.</p> 
+      <p>ISOs are downloaded from ISO lists with a complementary function (_download_iso). Inside the list are the URL's IDs, and the function places the ID into Google Drive URL format to reveal the final distro URL. The distro is downloaded with this URL. The downloaded ISO is written to the USB formatted with diskpart using "dd", or if not available, manually with diskpart. All operations are reported to the user as logs. And finally, with the user's approval, the computer is restarted with advanced options and directed to the USB.</p>
+      <p>While making main.py, I learned important basic topics such as how to write an ISO with PowerShell, how to partition a disk similarly with PowerShell, how to control multiple Python files in one file.</p>
+      <h4>WelcomeScreen (welcome screen)</h4>
+      <img src="images/lh/welcome.jpeg" width="600" alt="Welcome Screen">
+      <p>On this screen, the user is welcomed and continues by pressing a button.</p>
+      <h4>WarningScreen (warning screen)</h4>
+      <img src="images/lh/warning.jpeg" width="600" alt="Warning Screen">
+      <p>On this screen, the user is informed about important topics such as LinuxHelper being an experimental project, that they are responsible for any problems that may occur on their computer if they continue, and what they should pay attention to when specifying a disk to LinuxHelper, and the user either continues by approving this or closes LinuxHelper by not approving.</p>
+      <p>While creating this screen, I realized that warning the user and informing them about risks was an important operation.</p>
+      <h4>HardwareScreen (Hardware Screen)</h4>
+      <img src="images/lh/hardware.jpeg" width="600" alt="Hardware Screen">
+      <p>This screen only shows the scanned computer hardware to the user and provides rescan buttons. The hardware scanning operation takes place on the main machine, i.e., in main.py.</p>
+      <p>While making this screen, I learned better the communication between frontend and backend.</p>
+      <h4>Preferences Screen (preference screen)</h4>
+      <img src="images/lh/preferences.jpeg" width="600" alt="Preferences Screen">
+      <p>On this screen, 2 questions about personal preferences are asked to the user. The questions are:</p>
+      <ul>
+        <li>Is visual design important? (Is graphic design important to you?)</li>
+        <li>Primary use case (usage area)</li>
+      </ul>
+      <p>The user's answers are stored in main.py and later used to recommend distributions to the user.</p>
+      <h4>RecommendationScreen (recommendation screen)</h4>
+      <img src="images/lh/recommendation.jpeg" width="600" alt="Recommendation Screen">
+      <p>On this screen, the distributions recommended by LinuxHelper according to hardware levels and user preferences are presented to the user. If you wish, let me explain a bit more about how LinuxHelper recommends distributions to the user.</p>
+      <hr>
+
+      <p>This time, operations take place in "RecommendationScreen.py" instead of "main.py". While classifying computer hardware, it is classified according to the number of powerful hardware. When recommending distros, LinuxHelper uses the matrix I prepared. After hardware is classified as "Low, mid-low, mid-high, high", user preferences are taken into account and all are compared with the data in the matrix. In my matrix, there are 2 or 3 distributions for each scenario. LinuxHelper finds the scenario compatible with the user data from within the Matrix and then lists the distributions belonging to the scenario in the Matrix on the screen. Each distribution is in a box and has an install button below. The user presses the install button of the desired distribution and continues.</p>
+      <p>While creating this screen, I learned about matrix usage and how I could make a more effective decision mechanism.</p>
+
+      <h3>LinuxHelper Activity</h3>
+      <h4>Github</h4>
+      <img src="images/lh/github.jpeg" width="600" alt="Github">
+      <p>After completing LinuxHelper, I shared it on Github. It's still there. So far I have 3 stars and one fork.</p>
+      <h4>My Brother's Computer</h4>
+      <p>I tried running LinuxHelper on my brother's computer. My brother's computer's operating system was Windows 7. Because it didn't have the advanced reboot feature, it didn't work, but when we did it with Windows 10, it worked successfully. From this I learned that Windows 8 and below versions don't have the Advanced Reboot feature and I needed to determine system requirements accordingly.</p>
+      <h4>Reddit</h4>
+      <img src="images/lh/reddit.jpeg" width="600" alt="Reddit">
+      <p>To reach more people with LinuxHelper, I decided to advertise. I chose Reddit as a suitable platform. I shared a post there, but things didn't go as I expected. When the Reddit community saw that ISOs were downloaded from my Google Drive account, they became suspicious, and shortly after, my post was automatically deleted from Reddit. This was actually a very good thing for me. Because I had found a point that needed improvement.</p>
+      <h3>What am I doing now?</h3>
+      <ul>
+      <li>I'm improving the point I learned thanks to the Reddit community mentioned above. I plan to do this by integrating an internal SSH verification into the program and informing the user.</li>
+      </ul>
+
+    
+    
+    
+    
+    </div>
+     <script src="script.js"></script>
+</body>
+</html>

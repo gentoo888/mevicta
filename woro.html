@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◣◢  Woro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script> <!--Super Ninja's ready script-->
+</head>
+<body>
+    <nav>
+      <a href="index.html"><div class="logo">◣◢ </div></a>
+      <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
+      <ul id="navLinks" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="blogs.html">Learning Journal</a></li>
+
+      </ul>
+    </nav>
+    <div class="about-content">
+        <h3>Woro</h3>
+    <p>A game that helps you remember foreign words and their translations more easily. Written in Rust 🦀</p>
+    <h4>Features</h4>
+    <ul>
+        <li>Add words manually or import from TXT file</li>
+        <li>Level system (1 → 5) 
+            <ul>
+                <li>Correct → level up</li>
+                <li>Wrong → level down</li>
+            </ul>
+        </li>
+        <li>Random next word; progress bar; end screen when all reach level 5</li>
+        <li>JSON auto-save (words and levels remain after restart)</li>
+        <li>Clean GUI (egui) keyboard-friendly input flow</li>    
+    </ul>
+    <h3>Installation</h3>
+    <h4>On Windows</h4>
+    <p>Download the "woro.exe" file and run it.</p>
+    <h4>On Linux</h4>
+    <p>Download the AppImage file and run it.</p>
+    <h3>System Requirements</h3>
+    <ul>
+        <li>Windows: 10/11 (x64) (8.1 probably works).</li>
+        <li> Windows 7 is not supported (missing api-ms-win APIs). 8.1 probably works.</li>
+        <li>Linux: x86_64 (glibc). Tested on Gentoo; should work on other distributions too.</li>
+    </ul>
+    <h3>How to Use?</h3>
+    <ol>
+        <li>Start the application.</li>
+        <li>Add words manually (foreign language + translation), or:</li>
+        <li>Import TXT list: 
+            <ul>
+                <li>Each line should be: "foreign_word translation". Note: If you want woro to ask the translation's foreign word, give the words and translations in reverse order.</li>
+            </ul>
+        </li>
+        <li>Go to the game: 
+            <ul>
+                <li>Write the translation and press Enter or click the "Check" button</li>
+                <li>Correct → level up; Wrong → shows correct translation and continues</li>
+                <li>Progress bar shows mastered/total words</li>
+                <li>When all reach level 5 (usually takes some time), you'll see an end screen congratulating you 🎓.</li>
+            </ul>
+        </li>
+    </ol>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
