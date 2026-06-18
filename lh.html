@@ -1,82 +1,1166 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>◣◢  LinuxHelper</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Journals: SelfLinux Recommender</title>
+  </head>
+  <body>
     <nav>
-      <a href="index.html"><div class="logo">◣◢ </div></a>
-      <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
-      <ul id="navLinks" class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="project.html" class="nav-link">Projects</a></li>
-        <li><a href="aboutme.html">About Me</a></li>
-        <li><a href="blogs.html">Learning Journal</a></li>
+      <a href="lh.html"><div class="logo">SelfLinux</div></a>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">About Me</a></li>
+        <li><a href="lh.html">Learning Journal</a></li>
       </ul>
     </nav>
-    <div class="about-content">
-      <h3>LinuxHelper Learning Journal</h3>
-      <p>LinuxHelper is one of my first projects. It was written in Python, which is one of the most widely known languages. The graphical interface library is "Tkinter". My purpose in making this project was to facilitate Windows users' transition to Linux and open new doors for them.</p>
-      <h4>LinuxHelper is Born</h4>
-      <p>After going through a challenging but equally enjoyable learning process about Linux, installing the necessary software tools, and learning Python from the internet, I decided to start making real projects. For my project to be attention-grabbing, my area of interest also had to be attention-grabbing. I learned from some platforms (Reddit, YouTube..) that many Windows users today want to switch to Linux but don't have enough technical knowledge and need help, so I decided to develop software that would assist them. The idea for LinuxHelper was born then.</p>
-      <h3>Getting Started</h3>
-      <h4>Main Engine (main.py)</h4>
-      <img src="images/lh/main.jpeg" width="600" alt="Code">
-      <p>I started making LinuxHelper first with the main engine (main.py). This would contain LinuxHelper's pages, manage distro URLs, define the computer's operating system and download folder, download ISOs from my Google Drive account, write them to USB, and at the same time provide logs while doing this and apply basic operations like these. In short, it would create the software's skeleton. Operations would take place here. Without this code, LinuxHelper couldn't work because it was both calling the screens and performing the backend task to make LinuxHelper do its job. Some components of main.py are a measure-and-executor functions and many lists. Inside the executor functions, there are worker functions, and these functions are the functions that execute the operations.</p>
-    
-      <p>Main.py starts by showing the welcome screen to the user. Afterwards, the warning screen comes. Users who accept the warnings are shown the hardware screen, and at the same time, their computers are scanned and hardware is classified. Then, a screen asking personal preferences is shown to the user. Finally, with all this information, 2 or 3 distributions (distros) are recommended to the user. The user selects a distro, and main.py starts the real work by downloading the distro ISO.</p> 
-      <p>ISOs are downloaded from ISO lists with a complementary function (_download_iso). Inside the list are the URL's IDs, and the function places the ID into Google Drive URL format to reveal the final distro URL. The distro is downloaded with this URL. The downloaded ISO is written to the USB formatted with diskpart using "dd", or if not available, manually with diskpart. All operations are reported to the user as logs. And finally, with the user's approval, the computer is restarted with advanced options and directed to the USB.</p>
-      <p>While making main.py, I learned important basic topics such as how to write an ISO with PowerShell, how to partition a disk similarly with PowerShell, how to control multiple Python files in one file.</p>
-      <h4>WelcomeScreen (welcome screen)</h4>
-      <img src="images/lh/welcome.jpeg" width="600" alt="Welcome Screen">
-      <p>On this screen, the user is welcomed and continues by pressing a button.</p>
-      <h4>WarningScreen (warning screen)</h4>
-      <img src="images/lh/warning.jpeg" width="600" alt="Warning Screen">
-      <p>On this screen, the user is informed about important topics such as LinuxHelper being an experimental project, that they are responsible for any problems that may occur on their computer if they continue, and what they should pay attention to when specifying a disk to LinuxHelper, and the user either continues by approving this or closes LinuxHelper by not approving.</p>
-      <p>While creating this screen, I realized that warning the user and informing them about risks was an important operation.</p>
-      <h4>HardwareScreen (Hardware Screen)</h4>
-      <img src="images/lh/hardware.jpeg" width="600" alt="Hardware Screen">
-      <p>This screen only shows the scanned computer hardware to the user and provides rescan buttons. The hardware scanning operation takes place on the main machine, i.e., in main.py.</p>
-      <p>While making this screen, I learned better the communication between frontend and backend.</p>
-      <h4>Preferences Screen (preference screen)</h4>
-      <img src="images/lh/preferences.jpeg" width="600" alt="Preferences Screen">
-      <p>On this screen, 2 questions about personal preferences are asked to the user. The questions are:</p>
+    <div class="content">
+      <!-- THE OLD VERSION'S LEARNING JOURNAL    -->
+      <div class="old-section">
+        <h3>LinuxHelper Learning Journal (Original)</h3>
+        <p>
+          LinuxHelper is one of my first projects. It was written in Python,
+          which is one of the most widely known languages. The graphical
+          interface library is "Tkinter". My purpose in making this project was
+          to facilitate Windows users' transition to Linux and open new doors
+          for them.
+        </p>
+        <h4>LinuxHelper is Born</h4>
+        <p>
+          After going through a challenging but equally enjoyable learning
+          process about Linux, installing the necessary software tools, and
+          learning Python from the internet, I decided to start making real
+          projects. For my project to be attention-grabbing, my area of interest
+          also had to be attention-grabbing. I learned from some platforms
+          (Reddit, YouTube..) that many Windows users today want to switch to
+          Linux but don't have enough technical knowledge and need help, so I
+          decided to develop software that would assist them. The idea for
+          LinuxHelper was born then.
+        </p>
+        <h4>Main Engine (main.py)</h4>
+        <p>
+          I started making LinuxHelper first with the main engine (main.py).
+          This would contain LinuxHelper's pages, manage distro URLs, define the
+          computer's operating system and download folder, download ISOs from my
+          Google Drive account, write them to USB, and at the same time provide
+          logs while doing this and apply basic operations like these. In short,
+          it would create the software's skeleton. Operations would take place
+          here. Without this code, LinuxHelper couldn't work because it was both
+          calling the screens and performing the backend task to make
+          LinuxHelper do its job.
+        </p>
+        <p>
+          Main.py starts by showing the welcome screen to the user. Afterwards,
+          the warning screen comes. Users who accept the warnings are shown the
+          hardware screen, and at the same time, their computers are scanned and
+          hardware is classified. Then, a screen asking personal preferences is
+          shown to the user. Finally, with all this information, 2 or 3
+          distributions (distros) are recommended to the user. The user selects
+          a distro, and main.py starts the real work by downloading the distro
+          ISO.
+        </p>
+        <p>
+          ISOs are downloaded from ISO lists with a complementary function
+          (_download_iso). Inside the list are the URL's IDs, and the function
+          places the ID into Google Drive URL format to reveal the final distro
+          URL. The distro is downloaded with this URL. The downloaded ISO is
+          written to the USB formatted with diskpart using "dd", or if not
+          available, manually with diskpart. All operations are reported to the
+          user as logs.
+        </p>
+        <h4>WelcomeScreen</h4>
+        <p>
+          On this screen, the user is welcomed and continues by pressing a
+          button.
+        </p>
+        <h4>WarningScreen</h4>
+        <p>
+          On this screen, the user is informed about important topics such as
+          LinuxHelper being an experimental project, that they are responsible
+          for any problems that may occur on their computer if they continue,
+          and what they should pay attention to when specifying a disk to
+          LinuxHelper, and the user either continues by approving this or closes
+          LinuxHelper by not approving.
+        </p>
+        <h4>HardwareScreen</h4>
+        <p>
+          This screen only shows the scanned computer hardware to the user and
+          provides rescan buttons. The hardware scanning operation takes place
+          on the main machine, i.e., in main.py.
+        </p>
+        <h4>Preferences Screen</h4>
+        <p>
+          On this screen, 2 questions about personal preferences are asked to
+          the user: Is visual design important? and Primary use case. The user's
+          answers are stored in main.py and later used to recommend
+          distributions.
+        </p>
+        <h4>RecommendationScreen</h4>
+        <p>
+          On this screen, the distributions recommended by LinuxHelper according
+          to hardware levels and user preferences are presented to the user.
+          LinuxHelper uses the matrix I prepared. After hardware is classified
+          as "Low, mid-low, mid-high, high", user preferences are taken into
+          account and all are compared with the data in the matrix. In my
+          matrix, there are 2 or 3 distributions for each scenario.
+        </p>
+        <h4>Github</h4>
+        <p>
+          After completing LinuxHelper, I shared it on Github. It's still there.
+          So far I have 3 stars and one fork.
+        </p>
+        <h4>My Brother's Computer</h4>
+        <p>
+          I tried running LinuxHelper on my brother's computer. My brother's
+          computer's operating system was Windows 7. Because it didn't have the
+          advanced reboot feature, it didn't work, but when we did it with
+          Windows 10, it worked successfully. From this I learned that Windows 8
+          and below versions don't have the Advanced Reboot feature.
+        </p>
+        <h4>Reddit</h4>
+        <p>
+          To reach more people with LinuxHelper, I decided to advertise. I chose
+          Reddit as a suitable platform. I shared a post there, but things
+          didn't go as I expected. When the Reddit community saw that ISOs were
+          downloaded from my Google Drive account, they became suspicious, and
+          shortly after, my post was automatically deleted from Reddit. This was
+          actually a very good thing for me. Because I had found a point that
+          needed improvement.
+        </p>
+        <p>
+          I was improving the point I learned thanks to the Reddit community. I
+          planned to do this by integrating an internal SSH verification into
+          the program and informing the user.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- NEW VERSIONS'S LEARNING JOURNAL   -->
+
+      <h3>SelfLinux Recommender v2 — A Complete Rewrite</h3>
+      <p>
+        The Reddit incident taught me something crucial: people will not trust a
+        program that downloads ISOs from someone's personal Google Drive. And
+        they shouldn't. An ISO is a complete operating system image, if someone
+        tampered with it, they could own your machine. So I started thinking
+        about what a real, trustworthy Linux recommender should look like. The
+        answer turned out to be: rewrite everything LOL. The old LinuxHelper had
+        hardcoded URLs, a two-question preference system, raw
+        <code>dd</code> USB writing, no verification, and... a design that
+        looked like a homework project. SelfLinux Recommender v2 fixed every one
+        of those problems and it taught a lot of new things to me along the way.
+      </p>
+
+      <h4>What Changed</h4>
+      <p>
+        The rewrite touched every single file. Instead of one monolithic
+        <code>main.py</code> doing everything, the new version is split into
+        focused modules: <code>theme.py</code> for consistent styling,
+        <code>cpu_probe.py</code> / <code>gpu_probe.py</code> /
+        <code>ram_probe.py</code> / <code>storage_probe.py</code> /
+        <code>battery_probe.py</code> for hardware scanning,
+        <code>iso_resolver.py</code> for dynamic URL resolution,
+        <code>sha_verify.py</code> for checksum verification,
+        <code>recommender_engine.py</code> for the scoring engine,
+        <code>usb_writer.py</code> for proper bootable USB creation, and
+        <code>dependency_screen.py</code> to make sure all required Python
+        packages are installed before anything else runs. The old screens
+        (WelcomeScreen, WarningScreen, HardwareScreen, PreferencesScreen,
+        RecommendationScreen) were all redesigned with a cleaner look, and a new
+        DependencyScreen was added as the very first thing the user sees.
+      </p>
+
+      <h3>Design Philosophy — theme.py</h3>
+      <p>
+        One of the first things I did was pull all visual constants out of every
+        screen file and into a single place. In the old LinuxHelper, colors and
+        font sizes were scattered everywhere, and changing one thing meant
+        hunting through five files. The new <code>theme.py</code> is short and
+        deliberate: it defines a <code>COLORS</code> dictionary (background,
+        surface, border, text, muted text, primary blue, success green, danger
+        red, and their background tints), a <code>FONTS</code> dictionary
+        (title, h1, h2, body, body bold, small, mono, button), and two functions
+        that every screen uses.
+      </p>
+      <p>
+        The <code>apply_theme(root)</code> function configures the
+        <code>ttk.Style</code> object so all Tkinter widgets look consistent. It
+        uses the <code>clam</code> built-in theme as a base (the most
+        customizable one), then overrides button styles (<code
+          >Primary.TButton</code
+        >
+        for the blue action buttons, <code>Secondary.TButton</code> for the
+        outline style secondary buttons, <code>Danger.TButton</code> for
+        destructive actions), progress bar colors, radio buttons, and card
+        frames. This means adding a new screen later is just a matter of using
+        the right style names, no per file color tweaking.
+      </p>
+      <p>
+        The <code>make_card(parent)</code> helper creates the border and inner
+        frame pattern used everywhere: a thin gray outer frame (acting as the
+        border) with a white inner frame padded on all sides. Every content
+        section in every screen uses this pattern, so cards look identical
+        across the entire app. The design is minimal on purpose: no animations,
+        no glow effects, no shadows beyond the thin border. Clean and readable
+        Instead of pure AI slop.
+      </p>
+      <p>
+        What I learned: centralizing design tokens is not just about
+        convenience. It changes how you think about adding new screens. When the
+        vocabulary (colors, fonts, card helper) already exists, you spend time
+        on the content, not on fiddling with hex values. Also, Tkinter's
+        <code>ttk.Style</code> system is more powerful than it looks. You can
+        define named styles and map them to different states (active, disabled,
+        pressed) with <code>style.map()</code>, which is how the primary button
+        gets a darker shade on hover without any JavaScript like event handling.
+      </p>
+
+      <h3>Hardware Probing: The Five Great Probes</h3>
+      <p>
+        The old LinuxHelper scanned hardware by reading a few values from
+        <code>psutil</code> and putting them into a simple "low/mid/high"
+        bucket. It worked™, but it was shallow: no CPU benchmark score, no GPU
+        VRAM detection, no storage type (NVMe vs HDD), no battery awareness. The
+        version 2 probes are each their own module, each cross-platform Windows,
+        Linux, macOS, and each returns a structured dictionary with a normalized
+        score.
+      </p>
+
+      <h4>cpu_probe.py: Scoring the Brain</h4>
+      <p>
+        The CPU probe returns a <code>CpuInfo</code> TypedDict with fields like
+        <code>model</code>, <code>cores</code>, <code>threads</code>,
+        <code>max_ghz</code>, <code>vendor</code> (Intel/AMD/Apple/ARM),
+        <code>generation</code> (a rough hint like "13th gen Intel" or "Ryzen
+        5000 series"), and a <code>score</code> from 0 to 100. Getting the model
+        name is platform-specific: on Linux it reads <code>/proc/cpuinfo</code>,
+        on Windows it runs PowerShell's
+        <code>Get-CimInstance Win32_Processor</code> (working with powershell is
+        so annoying if you are a linux user), on macOS it calls
+        <code>sysctl -n machdep.cpu.brand_string</code>. The vendor detection
+        uses keyword matching (brands like "Core", "Ryzen", "Xeon") in the model
+        string. Generation detection uses regex patterns. For example, an Intel
+        model string like "i7-13700K" tells us it's 13th generation, while
+        "Ryzen 7 5800X" tells us it's Zen 3.
+      </p>
+      <p>
+        The scoring function <code>_score_cpu()</code> combines core count,
+        thread count, and max clock speed into a weighted formula. More cores
+        and higher clocks mean a higher score. A 4-core / 8-thread CPU at 4.5
+        GHz scores around 55; a 24-thread beast at 5.5 GHz scores in the 90s.
+        The category then maps the score to labels: "Very-low" (0-15), "Low-end"
+        (15-30), "Mid-range" (30-55), "High-end" (55-80), "Extreme" (80+).
+      </p>
+      <p>
+        What I learned: hardware detection on Windows via PowerShell is VERY
+        surprisingly reliable if you use <code>CimInstance</code> instead of the
+        older <code>WMI</code> approach. Also, CPU model strings are a mess
+        Intel alone has "Intel(R) Core(TM) i7-13700K" and "13th Gen Intel Core
+        i7" and "i7-13700KF" and who knows what else. It's like reading assembly
+        code while researching. (but in the boring way) Writing robust regex for
+        generation detection meant accepting that some models will fall through
+        to "Unknown" and... that's fine at this point.
+      </p>
+
+      <h4>gpu_probe.py: Detecting the Graphics Card (NVIDIA Shut Up)</h4>
+      <p>
+        The GPU probe detects all graphics cards in the system, estimates VRAM,
+        and categorizes each as <code>strong</code>, <code>mid</code>,
+        <code>weak</code>, or <code>nogpu</code>. On Windows, it uses
+        PowerShell's <code>Get-CimInstance Win32_VideoController</code> (these
+        powershell commands frying me...) which returns both the name and
+        <code>AdapterRAM</code>. On Linux, it combines
+        <code>lspci -mm</code> (what a clean command :D) with
+        <code>nvidia-smi</code> (to (hopefully) get VRAM for NVIDIA cards). On
+        macOS, it uses <code>system_profiler SPDisplaysDataType</code> (apple's
+        commands aren't too innocent too).
+      </p>
+      <p>
+        The categorization uses keyword matching plus VRAM heuristics: if the
+        name contains "RTX 40" or "RX 7" it's strong; if it contains "GTX 10" or
+        "RX 5" it's mid; integrated Intel graphics are (ofc) weak; and no
+        detected discrete GPU means <code>nogpu</code>. VRAM helps disambiguate.
+        A card with 8 GB+ is at least mid, and 12 GB+ is strong.
+      </p>
+      <p>
+        What I learned: <code>AdapterRAM</code> on Windows is unreliable for
+        some cards (it may report 0 or a tiny number). The Linux world is
+        cleaner: <code>nvidia-smi</code> gives exact VRAM, and
+        <code>lspci</code> is always available. It's like heaven. The
+        keyword-based categorization is a pragmatic compromise: it won't be
+        perfect for every obscure GPU, but it covers the mainstream ones that
+        95% of users will have.
+      </p>
+
+      <h4>ram_probe.py: Memory and Its Details</h4>
+      <p>
+        RAM probing starts with <code>psutil.virtual_memory()</code> which gives
+        total, available, and used percent on all platforms. But the extra
+        details: speed in MHz, DDR type (DDR3/DDR4/DDR5), and number of slots
+        require platform-specific calls. On Windows,
+        <code>Get-CimInstance Win32_PhysicalMemory</code> returns
+        <code>Speed</code> and <code>SMBIOSMemoryType</code> (a number like 26
+        for DDR4, 34 for DDR5). On Linux,
+        <code>dmidecode -t memory</code> provides the same info but requires
+        root. The probe tries the platform-specific path and falls back
+        gracefully if it fails.
+      </p>
+      <p>
+        What I learned: <code>dmidecode</code> on Linux requires
+        <code>sudo</code>, and there's no clean way around that without setuid
+        wrappers. The probe documents this clearly: the basic numbers (total,
+        available, percent) always work; the extras are best effort. Also, the
+        SMBIOS memory type codes are not well-documented. I had to look them up
+        in the DMTF spec: 20=DDR, 21=DDR2, 24=DDR3, 26=DDR4, 34=DDR5.
+      </p>
+
+      <h4>storage_probe.py: NVMe, SSD, or HDD</h4>
+      <p>
+        Storage type matters A LOT for Linux. An NVMe drive means fast I/O and
+        good performance with any distro; a spinning HDD means you want
+        something lightweight so your disk doesn't have a panic attack. The
+        probe uses <code>Get-PhysicalDisk</code> on Windows (which returns
+        <code>MediaType</code> as "SSD" or "HDD" and <code>BusType</code> as
+        "NVMe" or "SATA"), <code>/sys/block/</code> and <code>findmnt</code> on
+        Linux, and <code>diskutil</code> on macOS. The categorization maps NVMe
+        to "high", SATA SSD to "fast", HDD to "low", and eMMC to "low".
+      </p>
+      <p>
+        What I learned:There's
+        <code>/sys/block/sdX/queue/rotational</code> (1=HDD, 0=SSD), but NVMe
+        drives appear under <code>/dev/nvme*</code> and don't even have that
+        file in the same way. The probe handles both paths: NVMe by device name
+        pattern, SATA by the rotational flag.
+      </p>
+
+      <h4>battery_probe.py: Laptop or Desktop?</h4>
+      <p>
+        The battery probe is the simplest:
+        <code>psutil.sensors_battery()</code> returns percent, plugged status,
+        and whether a battery exists. If psutil doesn't support it (some Linux
+        setups), the probe falls back to reading
+        <code>/sys/class/power_supply/BAT*/capacity</code>. The result includes
+        <code>is_laptop</code>, which is just a heuristic: if a battery is
+        present, it's probably a laptop. The recommender engine uses this to
+        boost battery friendly distros when the user cares about battery life.
+      </p>
+      <p>
+        What I learned: <code>psutil.sensors_battery()</code> is not available
+        on all platforms it's Linux-only in some builds for some reason. The
+        sysfs fallback is essential. Also, "laptop detection" via battery
+        presence is imperfect (some desktops have UPS batteries showing up. I
+        mean I expect everything in everywhere at this point), but it's good
+        enough for recommendation purposes.
+      </p>
+
+      <h3>Dynamic ISO Resolution: iso_resolver.py</h3>
+      <p>
+        This is the module that directly addresses the (holy) Reddit incident.
+        Instead of hosting ISOs on my GOOGLE DRIVE.... (which nobody trusted...
+        naturally), the resolver goes to the official download servers of each
+        distribution, follows redirects, scrapes directory listings, and returns
+        the real, current download URL. It also returns a checksum URL so we can
+        verify the download afterwards. It fails sometimes but... at least it
+        works™
+      </p>
+      <p>
+        The architecture is per distro resolver functions. Each distribution has
+        its own download page structure, so a one size fits all approach
+        unfortunately won't work. Ubuntu publishes releases at
+        <code>releases.ubuntu.com</code> with version directories; Fedora uses
+        <code>fedoraproject.org</code> with redirect links; Debian has a mirror
+        list; openSUSE Tumbleweed is a rolling release whose URL changes with
+        EVERY SNAPSHOT...; Pop!_OS uses a predictable pattern based on the
+        codename... I remember myself crashing out "WHY DO THEY MAKE THINGS
+        HARDER" while making the resolver... The
+        <code>RESOLVERS</code> dictionary maps display names to their functions,
+        and <code>resolve_iso(distro_name)</code> dispatches to the right one.
+      </p>
+      <p>
+        Three helper functions power all resolvers.
+        <code>_http_get(url)</code> does a GET request following redirects and
+        returns the HTML content plus the final URL.
+        <code>_resolve_redirect(url)</code> does a HEAD request first (lighter)
+        and falls back to GET if the server doesn't support HEAD.
+        <code>_scrape_latest(index_url, pattern)</code> fetches a directory
+        listing page, finds all filenames matching a regex pattern, sorts them
+        (preferring amd64 builds), and returns the full URL of the latest match.
+      </p>
+      <p>
+        For example, the Ubuntu resolver fetches
+        <code>releases.ubuntu.com</code>, finds all version directories (like
+        "24.04.3/"), sorts them newest-first, enters the latest LTS directory,
+        and looks for a file matching
+        <code>ubuntu-VERSION-desktop-amd64.iso</code>. The Fedora resolver
+        follows a redirect from <code>fedoraproject.org/workstation</code> to
+        the actual mirror, then scrapes the resulting page. The Debian resolver
+        fetches the official SHA512SUMS file and extracts the ISO URL from it.
+        Each resolver returns a dict with <code>url</code>,
+        <code>sha_url</code> (checksum file URL), <code>sha_algo</code> (sha256
+        or sha512), and <code>filename</code>.
+      </p>
+      <p>
+        What I learned: web scraping is fragile. Mirror page layouts change, and
+        regex patterns that work today might (and do) break tomorrow. The per
+        distro approach is more code but more robust when Ubuntu redesigns their
+        download page, only the Ubuntu resolver breaks. I also learned that many
+        download servers use HTTP redirects (302, 301) to point you to the
+        nearest mirror, and <code>urllib</code> follows these automatically. The
+        key insight was that you don't need to mirror the ISO yourself. The
+        distribution's own infrastructure is the source of truth, and following
+        their redirects is both faster (geographically closer mirror) and more
+        trustworthy (you're getting it from their official CDN).
+      </p>
+
+      <h3>SHA Verification: sha_verify.py</h3>
+      <p>
+        Downloading an ISO from an official URL is a good start, but how does
+        our very careful user know the file wasn't corrupted in transit or
+        tampered with at the mirror? The answer is cryptographic hash
+        verification. The
+        <code>sha_verify</code> module has two parts: the computation engine and
+        the verification UI.
+      </p>
+      <p>
+        The computation function
+        <code>compute_hash(file_path, algo)</code> reads the file in 1 MB
+        chunks, feeds each chunk to <code>hashlib</code>, and reports progress
+        via a callback. The chunked approach is important because a Linux ISO is
+        typically 2-5 GB reading it all into memory at once would crash the app.
+        The supported algorithms are MD5, SHA-1, SHA-256, and SHA-512, though
+        SHA-256 is the default.
+      </p>
+      <p>
+        The <code>fetch_expected_hash(sha_url, filename, algo)</code> function
+        downloads the checksum file from the distribution's server and parses it
+        to find the expected hash for our specific ISO filename. Checksum files
+        come in different formats: some have lines like
+        <code>HASH filename.iso</code>, some use
+        <code>HASH *filename.iso</code>, some have just the hash on a single
+        line. The parser handles all three.
+      </p>
+      <p>
+        The <code>ShaVerifyDialog</code> is a modal Tkinter window that shows
+        the file path, the algorithm being used, a progress bar, and then the
+        result: either a green "Hashes match" confirmation, a red "Hashes DO NOT
+        match" warning, or an amber "No reference available" notice. It runs the
+        hashing in a thread so the UI stays responsive, and it stores a
+        <code>result</code> attribute (True/False/None) that the installer
+        window reads after the dialog closes.
+      </p>
+      <p>
+        What I learned: <code>hashlib</code> is beautifully simple. You create a
+        hash object, call <code>update()</code> with chunks, and get the hex
+        digest at the end. The tricky part was the checksum file parsing,
+        because every distribution formats their SHA256SUMS file slightly
+        differently. Ubuntu uses <code>HASH filename</code>, Fedora uses
+        <code>HASH *filename</code>, and some distros just have a bare hash with
+        no filename. The regex
+        <code>^([0-9a-fA-F]{32,128})\s+\*?(\S+)</code> (it's straight up alien
+        language) covers most cases. I also learned that running a hash
+        computation in the main thread would freeze the entire GUI for 30+
+        seconds. Threading isn't really optional here.
+      </p>
+
+      <h3>Recommendation Engine: recommender_engine.py</h3>
+      <p>
+        The old LinuxHelper used a simple lookup matrix: if hardware is "mid"
+        and usage is "office", recommend these two distros. He was a simple guy.
+        But the new engine is score based: every distribution has a feature
+        vector (a dictionary of scored attributes from 0-10), and the engine
+        computes a weighted match score between the user's hardware +
+        preferences and each distro's attributes, then returns the top N matches
+        sorted by score.
+      </p>
+      <p>
+        The <code>DISTROS</code> dictionary defines 17 distributions, each with
+        a feature vector. The attributes include hardware weights (how well the
+        distro runs on low/mid/high hardware), user facing scores (beginner
+        friendliness, stability, cutting-edge, office, development, gaming,
+        creative, visual polish, privacy, free software purity, LTS score,
+        rolling score, battery friendliness), and metadata (desktop environment,
+        package manager, minimum/ideal RAM, whether it's good for old hardware,
+        and a one line summary).
+      </p>
+      <p>
+        The <code>recommend(state, prefs, top_n)</code> function takes the
+        hardware state (CPU score, GPU category, RAM, storage category) and the
+        user's preference answers, then iterates over every distro and computes
+        a match score. The scoring works like this: hardware match contributes
+        the largest chunk (the distro's weight for the user's hardware tier,
+        multiplied by 6), then usage (office/development/gaming/creative score
+        times 3), then experience level (beginner friendliness times 2.5 for
+        beginners, cutting-edge times 1.5 for advanced users), then update
+        preference (stability + LTS for stable-preferring users, cutting-edge +
+        rolling for bleeding-edge users), and so on for privacy, free software,
+        battery, Windows like interface, and desktop preference. Penalties are
+        applied for things like being below minimum RAM or the user wanting free
+        software but the distro having proprietary blobs.
+      </p>
+      <p>
+        The result includes a hardware score (0-100, computed as a weighted
+        average of CPU 30%, GPU 20%, RAM 30%, storage 20%), a tier label
+        ("ultra", "high", "mid_high", "mid", "mid_low", "low", "very_low"), and
+        the ranked list of distro matches each with their score, summary, and a
+        list of human-readable reasons (like "Excellent fit for your hardware"
+        or "Beginner-friendly" or "Rolling release with latest software").
+      </p>
+      <p>
+        What I learned: designing a scoring system is more art than science. The
+        weights (6x for hardware, 3x for usage, 2.5x for experience, etc.) were
+        tuned by running the engine against known hardware profiles and checking
+        that the results made sense. A 2-core Celeron should get antiX or
+        Lubuntu at the top, not Fedora Workstation. A Ryzen 9 with an RTX 4080
+        should get Nobara and Pop!_OS, not ReactOS. The penalty system is
+        important too: if the user has 1 GB of RAM and the distro needs 4 GB,
+        that's a -30 penalty, which reliably pushes it below lighter
+        alternatives. The "reasons" list was a late addition but turned out to
+        be one of the most valuable features users want to know <em>why</em> a
+        distro was recommended, not just that it scored high. The penalty stuff
+        reminds me about AI training.
+      </p>
+
+      <h3>Bootable USB Writer: usb_writer.py</h3>
+      <p>
+        You may ask why didn't I just chose rufus and move on. I don't know the
+        answer too XD
+      </p>
+      <p>
+        This is probably the most complex module in the entire project, and the
+        one that taught me the most. The old LinuxHelper wrote ISOs to USB using
+        <code>dd</code>. The Unix "disk destroyer" that copies bytes blindly
+        from a file to a device. It works in the sense that the bytes end up on
+        the USB, but it creates a raw image that only boots in one specific way.
+        The new <code>usb_writer.py</code> removes the
+        <code>dd</code> dependency entirely and instead builds a proper bootable
+        live USB: it partitions the device, creates a filesystem, mounts the
+        ISO, copies the files, and installs a bootloader. This is what tools
+        like Rufus and balenaEtcher do under the hood but they are still the
+        GOAT.
+      </p>
+      <p>Rufus I am terribly sorry btw</p>
+
+      <h4>Partition Schemes: UEFI (GPT) vs MBR (BIOS)</h4>
+      <p>
+        Modern PCs boot using UEFI firmware, which expects a GPT partition table
+        and a FAT32 partition containing an EFI System Partition (ESP) with a
+        boot loader at <code>\EFI\BOOT\BOOTX64.EFI</code>. Older PCs and some
+        firmware settings use legacy BIOS boot, which expects an MBR partition
+        table with an active/bootable partition and boot code in the Master Boot
+        Record. The USB writer supports three options: "UEFI" creates a GPT
+        table with a single FAT32 ESP partition; "MBR" creates an msdos
+        partition table with a single bootable FAT32 partition; and "Auto"
+        inspects the ISO to see whether it ships EFI boot files and picks
+        accordingly. Practically every mainstream distro from the last decade
+        ships an <code>/EFI</code> directory, so Auto almost always picks UEFI.
+      </p>
+      <p>
+        I did the <code>auto</code> option "recommended" but if you don't really
+        know what to chose, I would recommend doing a quick research.
+      </p>
+
+      <h4>ISO Inspection</h4>
+      <p>
+        The <code>inspect_iso_boot_support()</code> function looks inside the
+        ISO without fully extracting it. If <code>7z</code> or
+        <code>7za</code> is available, it lists the archive contents and checks
+        for paths containing <code>/EFI/</code> or
+        <code>bootx64.efi</code> (UEFI) and <code>isolinux</code> or
+        <code>syslinux</code> (BIOS). If 7z is not available and we're on Linux,
+        it mounts the ISO read-only and checks for the
+        <code>/EFI</code> directory and <code>/isolinux</code> directory on the
+        mounted filesystem. If neither method works, it assumes both are
+        supported (the safest default).
+      </p>
+
+      <h4>Linux USB Writing</h4>
+      <p>
+        On Linux, the writer uses <code>parted</code> for partitioning (creating
+        either a GPT or msdos table, then a FAT32 partition from 1 MiB to 100%),
+        <code>mkfs.vfat</code> for formatting, <code>mount -o loop,ro</code> to
+        mount the ISO read-only, and then copies the files. If
+        <code>rsync</code> is available (and we're not root, which is common
+        when running with via sudo), it uses rsync for the bulk copy with
+        progress reporting. If we're root, it uses a custom
+        <code>_copy_tree_with_progress()</code> function that walks the
+        directory tree, computes the total size first, then copies file by file
+        with 4 MB chunk reads so the progress bar updates smoothly even for
+        large squashfs files. Finally, it installs GRUB: for UEFI,
+        <code>grub-install --target=x86_64-efi --removable</code>; for BIOS,
+        <code>grub-install --target=i386-pc</code>. But here's the key insight:
+        most modern ISOs already ship a working
+        <code>/EFI/BOOT/BOOTX64.EFI</code> file, so if the ISO has an EFI tree,
+        UEFI boot it just works™ after the file copy. No GRUB installation
+        needed. GRUB is a fallback for BIOS or for ISOs without an EFI tree.
+      </p>
+
+      <h4>Windows USB Writing... and the Bugs I Hit</h4>
+      <p>
+        Windows is where things got really interesting (painful). The writer
+        uses
+        <code>diskpart</code> for partitioning (a command line tool that's been
+        part of Windows since the good old DOS days) (I wasn't even existing in
+        those times but I still say "good old times" for some reason...),
+        <code>PowerShell Mount-DiskImage</code> to mount the ISO as a virtual
+        drive, <code>robocopy</code> to copy the files, and optionally
+        <code>bootsect</code> to write legacy boot code. Sounds simple enough.
+        It wasn't.
+      </p>
+
+      <h4>Here we go..</h4>
+      <h4>Bug #1: diskpart Hanging</h4>
+      <p>
+        The first time I ran the writer on my actual Windows machine, diskpart
+        just... stopped. The log showed
+        <code>$ diskpart /s C:\Users\...\selflinux_diskpart.txt</code> and then
+        nothing. The process was alive but producing no output. After a lot of
+        existencal crisis, I realized that diskpart is an interactive tool. It
+        buffers its output and only flushes when it thinks a human is reading it
+        interactively. My code was reading stdout line-by-line with
+        <code>for line in proc.stdout</code>, which blocks until a full line
+        arrives. But diskpart was buffering all its output until the process
+        ended, so the reader blocked forever waiting for a line that wouldn't
+        come until the process exited, and the process wouldn't exit because...
+        well, it would eventually, but the reader was stuck. Deadlock.
+      </p>
+      <p>
+        The fix was to add a <code>stream</code> parameter to the
+        <code>_run()</code> helper function. When
+        <code>stream=True</code> (default), it reads line-by-line as before —
+        good for long-running commands like rsync or robocopy where you want
+        real-time progress. When <code>stream=False</code>, it uses
+        <code>subprocess.run()</code> which waits for the process to complete,
+        then dumps the entire output at once. Diskpart now runs with
+        <code>stream=False</code> and a pretty generous 180-second timeout. No
+        more <em>deadlock</em>.
+      </p>
+      <p>
+        What I learned: not all command line tools behave like good Unix
+        citizens. Some are interactive programs that happen to accept a script
+        file, and they buffer output differently than a pipe reading program
+        expects. When a tool hangs, the first thing to check is whether it's a
+        buffering issue, not a logic error.
+      </p>
+
+      <h4>Bug #2: "convert mbr" Error on Freshly Cleaned Disk</h4>
+      <p>
+        After fixing the hanging issue, diskpart ran to completion but reported
+        an error: <code>The disk you specified is not MBR formatted</code> with
+        exit code 2147942487 (which is 0x80070057, E_INVALIDARG). The error
+        happened on the <code>convert mbr</code> step. Here's the thing: after
+        <code>clean</code> wipes a disk, the disk becomes completely blank — no
+        partition table at all. A blank disk defaults to MBR-style behavior.
+        Running <code>convert mbr</code> on it is like telling a blank sheet of
+        paper "please be white" — it's already white, and the command fails
+        because it expects to find an existing non-MBR partition table to
+        convert.
+      </p>
+      <p>
+        At least the fix was simple: remove <code>convert mbr</code> from the
+        script entirely. Only <code>convert gpt</code> is needed, and only when
+        the user chose UEFI scheme. After <code>clean</code>, the disk is
+        already MBR compatible, and creating a partition on it implicitly
+        initializes it as MBR.
+      </p>
+      <p>
+        What I learned: sometimes the fix is to do less. I was trying to be
+        explicit ("make it MBR!"), but the tool already knew that. Also,
+        diskpart's exit code is unreliable. A step like
+        <code>online disk noerr</code> on an already online disk can set a non
+        zero exit code even though nothing is wrong. I learned not to trust the
+        exit code and instead check for specific error markers in the output
+        text and verify that a drive letter actually appeared afterward.
+      </p>
+
+      <h4>Bug #3: Python 3.14 Lambda Scope</h4>
+      <p>
+        This was a subtle one. In the <code>_write_thread</code> function in
+        <code>main.py</code>, the exception handler had code like this:
+      </p>
+      <p>
+        <code
+          >except Exception as e:<br />
+          &nbsp;&nbsp;self.after(0, lambda: messagebox.showerror("Write failed",
+          str(e)))</code
+        >
+      </p>
+      <p>
+        This works fine in Python 3.11 and 3.12, but in Python 3.14 (which I was
+        testing with), it throws
+        <code>NameError: cannot access free variable 'e'</code>. The reason is
+        that Python 3.14 changed the scoping rules for exception variables: the
+        <code>e</code> in <code>except...as e</code> is deleted at the end of
+        the except block, so the lambda — which is evaluated later, when
+        <code>self.after</code> fires — tries to access a variable that no
+        longer exists.
+      </p>
+      <p>
+        The fix is to capture the string before the lambda:
+        <code>msg = str(e)</code> then
+        <code>lambda m=msg: messagebox.showerror("Write failed", m)</code>. The
+        default argument <code>m=msg</code> is evaluated at lambda definition
+        time, not at call time, so it captures the value before
+        <code>e</code> goes out of scope.
+      </p>
+      <p>
+        What I learned: Python's scoping rules are not set in stone — they
+        evolve between versions. The <code>except...as e</code> deletion
+        behavior was always documented (PEP 3110), but CPython previously kept
+        the reference alive long enough for lambdas to work. Python 3.14
+        enforced the deletion more strictly. Using default argument capture is a
+        robust pattern that works across all versions.
+      </p>
+
+      <h4>Bug #4: USB Not Booting: "No Operating System Found"</h4>
+      <p>
+        The most frustrating bug.... After writing, all the files were present
+        on the USB: <code>EFI/BOOT/BOOTX64.EFI</code>, <code>boot/grub2</code>,
+        <code>LiveOS</code>, <code>System</code>. The directory tree looked
+        perfect. But when I rebooted and selected the USB, the firmware slapped
+        on my face "no operating system found." The issue turned out to be a
+        mismatch between the partition scheme and the firmware boot mode. The
+        USB had been written with MBR scheme, but my computer was booting in
+        UEFI mode. A UEFI firmware looking for an EFI System Partition on an MBR
+        disk may or may not find it, depending on the firmware implementation.
+        Some do, some don't. Mine didn't.
+      </p>
+      <p>
+        The fixes were several. First, Auto mode now prefers UEFI when the ISO
+        ships EFI files — since practically every modern distro does, and
+        practically every PC since 2012 boots UEFI by default, this is the right
+        default. Second, I added <code>_find_efi_loader()</code> which verifies
+        that <code>\EFI\BOOT\BOOTX64.EFI</code> actually exists on the USB after
+        the copy, and warns if it doesn't. Third, the robocopy flags were
+        improved with <code>/COPY:DAT /R:1 /W:1</code> to ensure file attributes
+        are preserved and the copy doesn't hang on locked files. Fourth, the
+        final success message now explicitly tells the user to check their boot
+        menu and disable Secure Boot if necessary, because some distros (Fedora,
+        Ubuntu) ship signed boot loaders but others don't.
+      </p>
+      <p>
+        What I learned: a bootable USB is not just about copying files. The
+        firmware has expectations about the partition table format, the
+        partition type, and the presence of specific boot files at specific
+        paths. If any of these expectations aren't met, the firmware won't find
+        the operating system, regardless of whether the files are all there.
+        Also: UEFI vs BIOS is not just a "preference". It has to match what your
+        firmware is actually doing. Selecting the wrong scheme will give you a
+        USB that looks perfect but doesn't boot.
+      </p>
+
+      <h3>Dependency Screen: dependency_screen.py</h3>
+      <p>
+        SelfLinux needs a few Python packages that don't come with the standard
+        library: <code>psutil</code> (for hardware probing),
+        <code>Pillow</code> (for distro logo images), and
+        <code>requests</code> (for more robust HTTP downloads, optional). On a
+        fresh Python installation, none of these are present. The old
+        LinuxHelper just crashed if they were missing. The new approach is to
+        show a dependency installation screen as the very first thing the user
+        sees, before any other screen loads.
+      </p>
+      <p>
+        The <code>DependencyScreen</code> checks each required package by trying
+        to <code>importlib.import_module()</code> it. If it's already installed,
+        a green checkmark appears. If it's missing, a bullet dot appears and the
+        "Install & continue" button becomes active. Clicking it runs
+        <code>pip install --user PACKAGE</code> in a background thread,
+        streaming the pip output into a log console so the user can see what's
+        happening. If the <code>--user</code> flag fails (some environments
+        don't support it), it retries without it. After all required packages
+        are installed, a "Continue" button appears and the screen auto-advances
+        to the WelcomeScreen after 1.2 seconds.
+      </p>
+      <p>
+        A critical design detail: <code>dependency_screen.py</code> itself
+        imports nothing heavy at module load time. It only imports
+        <code>tkinter</code>, <code>threading</code>, <code>subprocess</code>,
+        <code>importlib</code>, and <code>theme</code>. All of which are
+        available before the dependencies are installed. The hardware probes
+        (<code>cpu_probe</code>, <code>gpu_probe</code>, and so on) are imported
+        lazily by <code>main.py</code> via <code>_load_probes()</code>, which is
+        only called after the dependency screen finishes.
+      </p>
+      <p>
+        In <code>main.py</code>, the probe imports start as <code>None</code>:
+      </p>
+      <p>
+        <code
+          >probe_ram = probe_gpu = probe_storage_type = probe_cpu =
+          probe_battery = None</code
+        >
+      </p>
+      <p>
+        After the dependency screen calls
+        <code>controller.on_dependencies_ready()</code>, the
+        <code>_load_probes()</code> function does the actual imports. If they
+        fail (e.g., psutil still isn't available for some reason), it returns
+        False and the probes stay as None, which the hardware screen handles
+        gracefully by showing "Scanning..." indefinitely rather than crashing.
+      </p>
+      <p>
+        What I learned: the "lazy import" pattern is essential for applications
+        that bootstrap their own dependencies. You can't import psutil at the
+        top of main.py if psutil might not exist yet. Setting the module
+        references to None and filling them in later is a simple, readable way
+        to handle this. Also, <code>pip install --user</code> doesn't work in
+        all environments. Some Python installations (like some system Python
+        setups on Linux) don't have a user site-packages directory. The retry
+        without-<code>--user</code> pattern is a pragmatic workaround.
+      </p>
+
+      <h3>Screen Redesigns</h3>
+
+      <h4>WelcomeScreen: The Front Door</h4>
+      <p>
+        The new welcome screen is simpler but more informative. It shows the app
+        name ("SelfLinux Recommender"), a subtitle ("Find the right Linux
+        distribution for your machine"), and three feature bullet points inside
+        a card: Hardware analysis, Smart recommendations, and Verified
+        downloads. Each bullet has a bold title and a one-line description. The
+        "Get Started" button at the bottom leads to the WarningScreen. The old
+        screen was just a title and a button — the new one tells the user what
+        the app actually does before they commit.
+      </p>
+
+      <h4>WarningScreen: Informed Consent</h4>
+      <p>
+        The warning screen now has two cards: a white "What this tool does" card
+        that explains the app's purpose in plain language, and a red-bordered
+        "Data loss warning" card that explicitly states writing to USB will
+        erase all data and that the developer is not responsible. The red border
+        uses <code>COLORS["danger"]</code> as the outer frame background with a
+        pink inner background (<code>COLORS["danger_bg"]</code>) — the same
+        pattern as the regular cards but with danger colors. The user can
+        continue or cancel. I learned that warning screens should be honest and
+        specific — not "be careful!" but "this will erase ALL data on the USB
+        drive you select."
+      </p>
+
+      <h4>HardwareScreen: The Dashboard</h4>
+      <p>
+        The hardware screen now shows four cards in a 2x2 grid (CPU, Memory,
+        Graphics, Storage) plus a score banner at the top. The score banner
+        shows the overall hardware score (0-100), the tier description (like
+        "Above average — handles modern desktops and most games"), and a
+        progress bar. Each card has a title, body text (with real values like
+        "AMD Ryzen 7 5800X / 8 cores / 16 threads / 4.6 GHz max"), and a
+        category subtitle (like "Category: High-end · Score: 72/100 · Zen 3").
+        The battery status is appended to the RAM card subtitle. The cards
+        update every 800ms via <code>_tick()</code>, reading from the
+        controller's state dictionary, which is populated by the async probe
+        threads. A "Re-scan" button lets users refresh if a device was plugged
+        in later.
+      </p>
+      <p>
+        What I learned: Tkinter's grid geometry manager is better than pack for
+        2x2 layouts. Pack is great for vertical stacking, but for side by side
+        cards you need grid with <code>columnconfigure</code> and
+        <code>rowconfigure</code>. Also, the 800ms polling loop is simpler than
+        trying to use event-based updates across threads — since Tkinter isn't
+        thread-safe, the probes write to a shared dictionary and the UI reads
+        from it on the main thread.
+      </p>
+
+      <h4>PreferencesScreen: Ten Questions Instead of Two lol</h4>
+      <p>
+        The old LinuxHelper asked two questions: "Is visual design important?"
+        and "What's your primary use case?" The new screen asks ten, each in its
+        own card, scrollable vertically: usage
+        (office/development/gaming/creative), experience level
+        (beginner/intermediate/advanced), visual polish preference, Windows-like
+        interface preference, update preference (stable/balanced/cutting-edge),
+        gaming intensity (none/casual/serious), battery priority, privacy
+        importance, free software only, and preferred desktop environment (a
+        dropdown with any/GNOME/KDE/Cinnamon/XFCE/LXQt/Pantheon). The questions
+        are defined as a data structure (<code>QUESTIONS</code> list of dicts)
+        rather than hardcoded UI code, which makes it easy to add or reorder
+        questions later.
+      </p>
+      <p>
+        The scroll implementation uses a Canvas with a scrollbar and an inner
+        Frame. A well known Tkinter pattern for scrollable containers. The inner
+        frame is placed as a canvas window item, and the canvas scroll region is
+        updated whenever the inner frame's size changes. Mouse wheel scrolling
+        is bound globally, which works on Windows.
+      </p>
+      <p>
+        What I learned: Tkinter doesn't have a native scrollable frame widget.
+        The Canvas plus inner Frame pattern is the standard workaround, and it
+        works well once you get the configuration right. The tricky part was
+        making the inner frame stretch to the canvas width (so cards don't float
+        in the center of a wide canvas) — that required binding to the Canvas's
+        &lt;Configure&gt; event and calling <code>itemconfig</code> on the
+        window item to set its width.
+      </p>
+
+      <h4>RecommendationScreen: The Tier List with Details</h4>
+      <p>
+        The recommendation screen is split into two columns: the left column
+        shows a ranked list of distro matches (top 8), and the right column
+        shows details for the selected distro. Each list item shows the distro
+        name, a score bar (a thin horizontal bar filled proportionally to the
+        match score), and the one line summary. Clicking an item populates the
+        detail panel on the right, which shows the full name, match score,
+        summary, desktop environment, package manager, minimum and ideal RAM,
+        and the "Why this match" reasons list. A "Download & Install" button at
+        the bottom of the detail panel opens the InstallerWindow.
+      </p>
+      <p>
+        What I learned: building a two column layout in Tkinter with grid is
+        straightforward, but making a clickable list with custom rendering (not
+        a standard Listbox) requires manually creating Frame widgets and binding
+        click events to every widget in the row (the item frame, the top frame,
+        the bar frame, and all their children). Without binding to children,
+        clicking on the text label inside a row wouldn't register as a click on
+        the row itself.
+      </p>
+
+      <h3>The Engine: main.py</h3>
+      <p>
+        Main.py ties everything together. It creates the main window, manages
+        the shared state dictionary, coordinates the screen navigation, handles
+        async hardware probing, and contains the InstallerWindow (the
+        download/verify/write flow). The old LinuxHelper had everything in one
+        file; the new main.py is more focused because the heavy logic lives in
+        dedicated modules, but it's still the conductor.
+      </p>
+
+      <h4>Application State</h4>
+      <p>
+        The <code>self.state</code> dictionary holds everything the screens and
+        the engine need: user preferences (visual, usage, experience,
+        update_pref, privacy, free_software_only, battery_priority,
+        windows_like, gaming_intensity, desktop_pref), CPU data (model,
+        category, score, generation, vendor, max_ghz, cores, threads), RAM data
+        (total_gb, available_gb, used_percent, category, speed_mhz, type), GPU
+        data (name, category, vram_mb), storage data (type, category, size_gb,
+        free_gb), and battery data (has_battery, percent, plugged). Each probe
+        thread writes to its own section of this dictionary, and the UI screens
+        read from it on the main thread. No locks are needed because Python's
+        GIL ensures dict writes are atomic for simple assignments.
+      </p>
+
+      <h4>Screen Navigation</h4>
+      <p>
+        All screens are created at startup and placed in the same grid cell
+        (row=0, column=0) with <code>sticky="nsew"</code>. The
+        <code>show_frame(name)</code> method calls <code>tkraise()</code> on the
+        named frame, which brings it to the top of the stacking order. This is
+        simpler than creating and destroying frames on demand, and it preserves
+        state when the user navigates back. The screen order is:
+        DependencyScreen → WelcomeScreen → WarningScreen → HardwareScreen →
+        PreferencesScreen → RecommendationScreen.
+      </p>
+
+      <h4>Administrator Relaunch (Windows)</h4>
+      <p>
+        Writing to a USB device requires administrator/root privileges. On
+        Windows, the app checks
+        <code>ctypes.windll.shell32.IsUserAnAdmin()</code> at startup, and if
+        not admin, re-launches itself using <code>ShellExecuteW</code> with the
+        <code>"runas"</code> verb, which triggers the UAC elevation prompt. The
+        original process then exits. This means the user sees a UAC dialog
+        before the app window appears, which is slightly abrupt but necessary —
+        the USB write will fail without admin rights.
+      </p>
+
+      <h4>InstallerWindow: Download, Verify, Write</h4>
+      <p>
+        The InstallerWindow is a Toplevel (popup) window that handles the entire
+        download to USB pipeline. It starts by resolving the ISO URL (via
+        <code>iso_resolver.resolve_iso()</code>), then shows the URL and a
+        "Download ISO" button. Downloading uses <code>urllib.request</code> with
+        a 64 KB read buffer, writing to a <code>.part</code> temporary file and
+        renaming it on completion. The progress callback updates the bar and a
+        text label showing downloaded/total/speed/percentage. After download,
+        the user is prompted to verify the checksum (via
+        <code>ShaVerifyDialog</code>). After verification (or skipping it), the
+        user selects a USB drive and a partition scheme (Auto/UEFI/MBR), clicks
+        "Write to USB", and the writer runs in a thread via
+        <code>usb_writer.write_bootable_usb()</code>.
+      </p>
+      <p>
+        The partition scheme selector is a Combobox dropdown populated from
+        <code>usb_writer.available_schemes()</code>, which returns a list of
+        (key, label) tuples like
+        <code>("auto", "Auto (recommended) — detect from ISO")</code>. The UI
+        stores the human readable label and maps it back to the key when the
+        user changes the selection.
+      </p>
+      <p>
+        USB drive enumeration uses PowerShell on Windows (<code
+          >Get-Disk | Where-Object BusType -eq 'USB'</code
+        >) and <code>lsblk</code> on Linux (filtering for removable devices with
+        <code>RM=1</code>). Each detected drive shows its disk number/device
+        path, drive letters, size, and model name.
+      </p>
+      <p>
+        What I learned: the <code>.part</code> file pattern (writing to a
+        temporary file and renaming on completion) is essential for download
+        reliability. If the download is interrupted, the partial file is easy to
+        detect and clean up. If the download completes and the rename succeeds,
+        you know you have a complete file. Also,
+        <code>urllib.request</code> follows redirects automatically, which is
+        necessary because many distro download URLs redirect to a mirror.
+      </p>
+
+      <h3>What the _run() Helper Taught Me</h3>
+      <p>
+        The <code>_run()</code> function in <code>usb_writer.py</code> is worth
+        its own section. It's a wrapper around <code>subprocess</code> that
+        handles several concerns: logging the command to the log callback,
+        optionally prepending <code>sudo</code> on Linux, streaming output line
+        by line vs running to completion, and checking exit codes. The
+        <code>stream</code> parameter was the biggest lesson.
+      </p>
+      <p>
+        When <code>stream=True</code>, it uses
+        <code>subprocess.Popen</code> with <code>stdout=PIPE</code> and reads
+        lines in a loop. This is perfect for longrunning commands where you want
+        realtime output: rsync with <code>--info=progress2</code>, robocopy,
+        grub-install. When <code>stream=False</code>, it uses
+        <code>subprocess.run()</code> with <code>capture_output=True</code>,
+        waits for the process to finish, then dumps all output lines at once.
+        This is essential for diskpart (which buffers output) and also useful
+        for quick commands like <code>wipefs</code> or
+        <code>partprobe</code> where there's nothing useful to stream.
+      </p>
+      <p>
+        The <code>check</code> parameter controls whether a non-zero exit code
+        raises <code>WriteError</code>. For diskpart,
+        <code>check=False</code> because the exit code is unreliable. For most
+        other commands, <code>check=True</code>. The
+        <code>stdin_text</code> parameter lets you write to the process's stdin
+        (used for some interactive tools). And the
+        <code>timeout</code> parameter prevents hangs — diskpart gets 180
+        seconds, robocopy gets 3600 seconds (large ISOs take a while to copy).
+      </p>
+      <p>
+        What I learned: wrapping subprocess in a helper function with
+        configurable behavior is one of the best design decisions I made.
+        Without it, every command invocation would have its own error handling,
+        logging, and timeout logic, and the diskpart streaming bug would have
+        been much harder to fix because the behavior would be inconsistent
+        across call sites. With the centralized helper, I fixed the streaming
+        issue once and it applied to every diskpart call.
+      </p>
+
+      <hr />
+
+      <h3>Lessons From the Whole Project</h3>
+      <p>
+        Building SelfLinux Recommender v2 was a completely different experience
+        from the original LinuxHelper. The first version was about getting
+        something to work at all. The second version was about getting it to
+        work <em>right</em>. Here are the biggest lessons, in no particular
+        order:
+      </p>
+
+      <p>
+        <strong>Trust the official sources.</strong> The Reddit incident wasn't
+        just about Google Drive looking sketchy — it was about the fundamental
+        principle that a security tool should download from the distribution's
+        own infrastructure. Dynamic URL resolution with redirect following is
+        more work than a hardcoded URL list, but it means the user is always
+        getting the latest release from the official mirror, and the checksum
+        can be verified against the distribution's own checksum file.
+      </p>
+
+      <p>
+        <strong>Verify, don't assume.</strong> The SHA verification screen adds
+        a step, but it turns a trust question ("is this ISO safe?") into a
+        mathematical fact ("the SHA-256 matches the official checksum" or "it
+        doesn't"). The user can see both hashes side by side and decide for
+        themselves. Without verification, the download is just bytes from the
+        internet.
+      </p>
+
+      <p>
+        <strong>Score-based systems need tuning, not just design.</strong> The
+        recommendation engine's weights (6x for hardware, 3x for usage, 2.5x for
+        experience) aren't theoretical — they're the result of running the
+        engine against known hardware profiles and adjusting until the results
+        made sense. A scoring system that gives wrong recommendations is worse
+        than no scoring system at all.
+      </p>
+
+      <p>
+        <strong>Platform differences are real and painful.</strong> diskpart on
+        Windows is not a Unix tool pretending to be one — it's a 30-year-old
+        interactive program with its own conventions, and it will deadlock if
+        you treat it like <code>ls</code>. Cross-platform code isn't just about
+        "if Windows do X, else do Y" — it's about understanding that the tools
+        on each platform have different assumptions about how they'll be called.
+      </p>
+
+      <p>
+        <strong>Dependency bootstrapping requires lazy imports.</strong> You
+        can't import a module that doesn't exist yet. The DependencyScreen +
+        lazy import pattern solves the chicken-and-egg problem: the screen that
+        installs dependencies can't itself depend on those dependencies.
+      </p>
+
+      <p>
+        <strong>Bootable USBs are not just file copies.</strong> Copying files
+        from an ISO to a USB is necessary but not sufficient for booting. The
+        firmware expects specific partition tables, specific file paths, and
+        specific boot code in specific places. Getting the files there is half
+        the battle; getting the firmware to find them is the other half.
+      </p>
+
+      <p>
+        <strong>A centralized helper function saves you from yourself.</strong>
+        The <code>_run()</code> wrapper in usb_writer.py meant I could fix the
+        diskpart deadlock in one place instead of hunting through every
+        subprocess call. The <code>make_card()</code> helper in theme.py meant
+        every card looks the same without copy-pasting layout code. When you
+        find yourself writing the same pattern three times, pull it into a
+        function.
+      </p>
+
+      <hr />
+
+      <h3>What's Next?</h3>
+      <p>
+        SelfLinux Recommender v2 is functional, but it's not finished. Here are
+        things I'm thinking about:
+      </p>
       <ul>
-        <li>Is visual design important? (Is graphic design important to you?)</li>
-        <li>Primary use case (usage area)</li>
+        <li>
+          The macOS USB writer is best-effort at best —
+          <code>diskutil</code> and <code>bless</code> can partition and flag a
+          disk, but making a Linux ISO bootable on Apple Silicon is a whole
+          different challenge that probably needs a different approach entirely.
+        </li>
+        <li>
+          The recommendation engine could benefit from user feedback: if someone
+          installs a recommended distro and likes it (or doesn't), that data
+          could refine the weights over time.
+        </li>
+        <li>
+          The ISO resolver could cache successful resolutions and fall back to
+          cached URLs when the network is slow or the mirror is down.
+        </li>
+        <li>
+          Secure Boot handling is still a gap: some distros ship signed boot
+          loaders and some don't, and the app should warn the user before they
+          write a distro that won't boot with Secure Boot enabled.
+        </li>
+        <li>
+          A persistent log file would help with debugging — right now all logs
+          disappear when the app closes.
+        </li>
       </ul>
-      <p>The user's answers are stored in main.py and later used to recommend distributions to the user.</p>
-      <h4>RecommendationScreen (recommendation screen)</h4>
-      <img src="images/lh/recommendation.jpeg" width="600" alt="Recommendation Screen">
-      <p>On this screen, the distributions recommended by LinuxHelper according to hardware levels and user preferences are presented to the user. If you wish, let me explain a bit more about how LinuxHelper recommends distributions to the user.</p>
-      <hr>
-
-      <p>This time, operations take place in "RecommendationScreen.py" instead of "main.py". While classifying computer hardware, it is classified according to the number of powerful hardware. When recommending distros, LinuxHelper uses the matrix I prepared. After hardware is classified as "Low, mid-low, mid-high, high", user preferences are taken into account and all are compared with the data in the matrix. In my matrix, there are 2 or 3 distributions for each scenario. LinuxHelper finds the scenario compatible with the user data from within the Matrix and then lists the distributions belonging to the scenario in the Matrix on the screen. Each distribution is in a box and has an install button below. The user presses the install button of the desired distribution and continues.</p>
-      <p>While creating this screen, I learned about matrix usage and how I could make a more effective decision mechanism.</p>
-
-      <h3>LinuxHelper Activity</h3>
-      <h4>Github</h4>
-      <img src="images/lh/github.jpeg" width="600" alt="Github">
-      <p>After completing LinuxHelper, I shared it on Github. It's still there. So far I have 3 stars and one fork.</p>
-      <h4>My Brother's Computer</h4>
-      <p>I tried running LinuxHelper on my brother's computer. My brother's computer's operating system was Windows 7. Because it didn't have the advanced reboot feature, it didn't work, but when we did it with Windows 10, it worked successfully. From this I learned that Windows 8 and below versions don't have the Advanced Reboot feature and I needed to determine system requirements accordingly.</p>
-      <h4>Reddit</h4>
-      <img src="images/lh/reddit.jpeg" width="600" alt="Reddit">
-      <p>To reach more people with LinuxHelper, I decided to advertise. I chose Reddit as a suitable platform. I shared a post there, but things didn't go as I expected. When the Reddit community saw that ISOs were downloaded from my Google Drive account, they became suspicious, and shortly after, my post was automatically deleted from Reddit. This was actually a very good thing for me. Because I had found a point that needed improvement.</p>
-      <h3>What am I doing now?</h3>
-      <ul>
-      <li>I'm improving the point I learned thanks to the Reddit community mentioned above. I plan to do this by integrating an internal SSH verification into the program and informing the user.</li>
-      </ul>
-
-    
-    
-    
-    
+      <p>
+        The journey from LinuxHelper to SelfLinux Recommender v2 has been about
+        learning that making something work is the beginning, not the end. The
+        real work starts when you ask: does it work <em>reliably</em>? Does it
+        work <em>securely</em>? Does it work <em>on someone else's machine</em>?
+        Those questions are harder, but they're the ones that matter.
+      </p>
     </div>
-     <script src="script.js"></script>
-</body>
+  </body>
 </html>
