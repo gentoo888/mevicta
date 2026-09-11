@@ -1,50 +1,325 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>◣◢  LinuxHelper</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script> <!--Super Ninja's ready script-->
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>◣◢ LinuxHelper</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <nav>
-      <a href="index.html"><div class="logo">◣◢ </div></a>
-      <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
+      <a href="index.html"><div class="logo">◣◢</div></a>
+      <div id="hamburger" class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
       <ul id="navLinks" class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="project.html" class="nav-link">Projects</a></li>
         <li><a href="aboutme.html">About Me</a></li>
         <li><a href="blogs.html">Learning Journal</a></li>
-
       </ul>
     </nav>
     <div class="about-content">
-        <h3>GİKAL Wortmeister</h3>
-        <img src="images/wrtm.png" alt="Wortmeister" width="600">
-        <p>German vocabulary learning application - developed with Rust + egui/eframe.</p>
-        <h4>Features</h4>
-        <ul>
-            <li>Built-in word sets (Prepared, 9-10th grade)</li>
-            <li>Interactive game mode</li>
-            <li>Progress tracking (level system)</li>
-            <li>Auto-save</li>
-            <li>Built-in logo and resources</li>
-            <li>Manual word addition (TXT import support)</li>
-            <li>Random word selection</li>
-        </ul>
-        <h4>Technologies</h4>
-        <ul>
-            <li>Rust - Programming language</li>
-            <li>egui/eframe - GUI framework</li>
-            <li>serde/serde_json - JSON parsing</li>
-            <li>image - Visual management</li>
-            <li>rfd - File dialog</li>
-        </ul>
-        <h4>Notes</h4>
-        <ul>
-            <li>Words are embedded into binary at compile-time</li>
-            <li>Progress is saved to user_progress.json file</li>
-            <li>Words reaching level 5 are considered "memorized"</li>
-        </ul>
+      <h3>GIKAL Wortmeister</h3>
+      <img src="images/wrtm.png" alt="Wortmeister" width="600" />
+      <p>
+        Web-based vocabulary learning application I made for my school,
+        GIKAL(Göztepe İhsan Kurşunoğlu Anadolu Lisesi).
+      </p>
+      <h4>Features</h4>
+      <ul>
+        <li>Built-in word sets</li>
+        <li>Interactive game mode</li>
+        <li>Progress tracking (level system)</li>
+        <li>Auto-save</li>
+        <li>Built-in logo and resources</li>
+        <li>Random word selection</li>
+      </ul>
+      <h4>Technologies</h4>
+      <ul>
+        <li>Rust - Programming language used for backend</li>
+        <li>HTML, CSS, Javascript for frontend</li>
+      </ul>
+      <h4>Notes</h4>
+      <ul>
+        <li>Words reaching level 5 are considered "memorized"</li>
+        <li>URL is coming soon! (Not deployed yet)</li>
+      </ul>
     </div>
+
+    <div class="about-content">
+      <h2>GIKAL Wortmeister - WASM Version</h2>
+      <h3>About the Project</h3>
+      <p>
+        GIKAL Wortmeister is a web based application that supports the German
+        vocabulary memorization process with spaced repetition and level based
+        progression. The project was prepared for the students of Göztepe İhsan
+        Kurşunoğlu Anatolian High School.
+      </p>
+      <p>It consists of three main components:</p>
+      <ol>
+        <li><strong>Rust based HTTP server</strong></li>
+        <li><strong>Rust WebAssembly core</strong></li>
+        <li><strong>HTML/CSS/JS frontend</strong></li>
+      </ol>
+      <p>
+        Although the infrastructure for this has not been fully prepared yet,
+        once ready users will be able to register and log in to save their
+        progress on the server, continue as a guest and keep their data in the
+        browser, or manually create and study their own word lists.
+      </p>
+      <hr />
+      <h2>Architecture</h2>
+      <p>
+        The user sends input from their browser, the input is carried to the
+        Rust Axum server and written to users.json. Afterwards, it is
+        transferred to the WebAssembly module together with static files like
+        index.html, styles.css, and WASM. Checks are performed using the word
+        catalog embedded via <code>include_dir!</code> and words normalized
+        during the process.
+      </p>
+      <h3>Layer Responsibilities</h3>
+      <h4>Server (<code>main.rs</code>)</h4>
+      <ul>
+        <li>User account management</li>
+        <li>Session authentication with UUID token</li>
+        <li>Storing progress and statistics data in a JSON file</li>
+        <li>
+          Serving static frontend files with
+          <code>tower_http::services::ServeDir</code>
+        </li>
+      </ul>
+      <h4>
+        WASM Core (<code>lib.rs</code>) (The main event on the Rust side happens
+        here)
+      </h4>
+      <ul>
+        <li>
+          Converts all JSON word files under <code>words/</code> into a catalog
+          at compile time
+        </li>
+        <li>Provides functions to be called from JavaScript:</li>
+        <ul>
+          <li>
+            <code>get_categories</code>, <code>get_sets</code>,
+            <code>get_words</code>, <code>get_category_name</code>
+          </li>
+          <li><code>check_answer</code></li>
+        </ul>
+        <li>Answer checking steps:</li>
+        <ol>
+          <li>Raw and normalized matching checks</li>
+          <li>
+            German articles are cleaned up (It seemed unnecessary at first but I
+            decided to add it later for assurance)
+          </li>
+          <li>Multiple alternative support</li>
+          <li>Ignoring parenthetical explanations</li>
+          <li>
+            Similarity scoring with <code>normalized_levenshtein</code> (85%
+            correct, 65% close threshold).
+          </li>
+        </ol>
+        <li>
+          After each answer result, the word level is updated between 1 and 5
+        </li>
+      </ul>
+      <h4>Frontend (classic CSS, HTML, JS trio)</h4>
+      <ul>
+        <li>
+          Screen transitions (auth, menu, category, set, game, end, addWords...)
+        </li>
+        <li>
+          Session and guest progress via <code>sessionStorage</code> /
+          <code>localStorage</code>
+        </li>
+        <li>
+          Saves progress to the server after authentication
+          (<code>/api/auth/save</code>)
+        </li>
+        <li>Synchronized communication with the WASM module</li>
+        <li>
+          Responsive design, custom CSS animations (confetti on the end screen,
+          streak explosion, box shaking on incorrect answers).
+        </li>
+      </ul>
+      <h2>Server API Reference</h2>
+      <p>
+        All requests use the <code>POST</code> method and require
+        <code>Content-Type: application/json</code>
+      </p>
+      <h2>WASM Function Reference</h2>
+      <p>
+        All functions exported via <code>wasm-bindgen</code> return a JSON
+        string
+      </p>
+      <h2>Answer Checking Algorithm</h2>
+      <p>
+        The <code>check_answer</code> function responsible for this task
+        performs the following checks in order:
+      </p>
+      <ol>
+        <li>
+          <strong>Direct match:</strong> The user's answer is compared to the
+          correct answer using <code>trim().to_lowercase()</code>
+        </li>
+        <li>
+          <strong>Spaceless match:</strong> All spaces are removed and the
+          comparison is repeated
+        </li>
+        <li>
+          <strong>NFKD normalization:</strong> Both texts are decomposed using
+          Unicode NFKD, then German/Turkish special characters are converted to
+          their ASCII equivalents (ä→ae, ß→ss, ş→s etc.) The normalized texts
+          are compared
+        </li>
+        <li>
+          <strong>Article stripping:</strong> German definite and indefinite
+          articles are removed using <code>strip_article()</code>, the remaining
+          part is compared both raw and normalized
+        </li>
+        <li>
+          <strong>Alternative translations:</strong> If the correct answer
+          contains the <code>/</code> character, normalized and similarity
+          checks are performed for each alternative. If Similarity ≥ 0.85, it is
+          considered correct (I chose the classic Turkish Education System
+          method XD)
+        </li>
+        <li>
+          <strong>Parenthetical explanations:</strong> If there is a
+          <code>(</code> in the correct answer, the part before the parentheses
+          is checked using the same methods
+        </li>
+        <li>
+          <strong>Levenshtein similarity:</strong> If none of the above match,
+          similarity is calculated using <code>normalized_levenshtein</code>. ≥
+          0.85 is considered correct, ≥ 0.65 is considered close
+        </li>
+      </ol>
+      <p>Level update:</p>
+      <ul>
+        <li>
+          Correct: If <code>old_level</code> is less than 5, it increases by 1.
+        </li>
+        <li>
+          Incorrect: If <code>old_level</code> is greater than 1, it decreases
+          by 1.
+        </li>
+        <li>Thus the new level always remains between 1 and 5.</li>
+      </ul>
+      <hr />
+      <h2>Progress and Statistics Data Structure</h2>
+      <h3><code>progress</code></h3>
+      <p>
+        Keys are the combination of category and set ID (e.g.
+        <code>"hazirlik_1"</code>). Each entry:
+      </p>
+      <pre><code>{
+  "category": "Hazırlık",
+  "setName": "Hazırlık / 1. Ünite",
+  "masteredCount": 42,
+  "totalCount": 50,
+  "updatedAt": "2025-01-01T12:00:00.000Z",
+  "words": [
+    { "foreign": "der Hund", "translation": "köpek", "level": 5 },
+    ...
+  ]
+}</code></pre>
+      <h3><code>stats</code> Object</h3>
+      <pre><code>{
+  "bestStreak": 15,
+  "totalCorrect": 120,
+  "totalAnswered": 145
+}</code></pre>
+      <p>
+        For logged in users, this data is saved both to the server
+        (<code>/api/auth/save</code>) and to <code>localStorage</code> as a
+        backup. For guests, since there is no user field to save to, only
+        <code>localStorage</code> is used
+      </p>
+      <hr />
+      <h2>Build and Run</h2>
+      <p>I don't know who would compile this but I thought I'd write it down</p>
+      <h3>1. Build the WASM module</h3>
+      <pre><code>wasm-pack build --target web --out-dir static/pkg</code></pre>
+      <p>
+        This command creates the necessary <code>.wasm</code> and
+        <code>.js</code> bindings under <code>static/pkg/</code>
+      </p>
+      <h3>2. Build the server</h3>
+      <pre><code>cargo build --release --bin wortmeister-server</code></pre>
+      <h3>3. Start the server</h3>
+      <pre><code>USERS_FILE=users.json STATIC_DIR=../static PORT=9090 ./target/release/wortmeister-server</code></pre>
+      <p>Environment variables:</p>
+      <ul>
+        <li>
+          <code>USERS_FILE</code>: User database file (<code>users.json</code>)
+        </li>
+        <li>
+          <code>STATIC_DIR</code>: Directory containing static files (frontend
+          etc.) (<code>../static</code>)
+        </li>
+        <li><code>PORT</code>: Server port (default: <code>9090</code>)</li>
+      </ul>
+      <h3>4. Access</h3>
+      <p>Access is provided by entering the port in the browser</p>
+      <h2>Frontend Screens</h2>
+      <ul>
+        <li>
+          <strong>authScreen</strong>: Registration, login, and continue as
+          guest options
+        </li>
+        <li>
+          <strong>menuScreen</strong>: Main menu, set selection, manual word
+          addition, continue, logout...
+        </li>
+        <li><strong>categoryScreen</strong>: Grade, category selection</li>
+        <li><strong>setScreen</strong>: Unit set selection</li>
+        <li>
+          <strong>gameScreen</strong>: Word card, level indicator, answer input,
+          feedback, progress bar...
+        </li>
+        <li>
+          <strong>endScreen</strong>: Congratulations screen and confetti when
+          all words are completed
+        </li>
+        <li>
+          <strong>addWordsScreen</strong>: User creating their own word list
+        </li>
+      </ul>
+      <hr />
+      <h2>
+        Security Notes (Because I want to be a Hardware Security Specialist in
+        the future)
+      </h2>
+      <ul>
+        <li>
+          Passwords are hashed using
+          <code>SHA256(username + ":" + password)</code>. Since no salt is used,
+          bcrypt or argon2 is recommended in production
+        </li>
+        <li>
+          Session tokens are UUIDs and stored in plain text. I think it is
+          sufficient for an educational application that does not contain
+          sensitive data
+        </li>
+        <li>
+          I made an effort to configure CORS to allow all sources
+          (<code>CorsLayer::permissive()</code>). It is only suitable for use on
+          an internal network
+        </li>
+      </ul>
+      <hr />
+      <h2>License and Contribution</h2>
+      <p>MIT License</p>
+      <p>
+        This project was created by <strong>Mete PARLAK</strong> to make it
+        easier and somewhat more fun for the students of Göztepe İhsan
+        Kurşunoğlu Anatolian High School, especially those in the preparatory
+        class, to prepare for their weekly vocabulary exams. It is a fork of my
+        Woro project. I am always open to and welcome PRs. For missing or
+        incorrect word reports, please notify <code>metep788@gmail.com</code>.
+      </p>
+    </div>
+  </body>
+</html>
