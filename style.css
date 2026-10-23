@@ -6,18 +6,18 @@
 }
 
 :root {
-  --primary-color: #8b6914;
-  --secondary-color: #6b4c0c;
-  --dark-bg: #1a1408;
-  --card-bg: #2c2410;
-  --text-light: #d4b870;
-  --text-gray: #907040;
-  --accent-glow: #d0a848;
+  --primary-color: #88c0d0;
+  --secondary-color: #5e81ac;
+  --dark-bg: #0d1118;
+  --card-bg: #1a2430;
+  --text-light: #b4d0e0;
+  --text-gray: #6a8ea0;
+  --accent-glow: #96ccd8;
 }
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, var(--dark-bg) 0%, #382e18 100%);
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #1e2c3a 100%);
   color: var(--text-light);
   line-height: 1.6;
   overflow-x: hidden;
@@ -66,7 +66,7 @@ header {
   top: 0;
   width: 100%;
   padding: 1.5rem 5%;
-  background: #1a1408cc;
+  background: #0d1118cc;
   backdrop-filter: blur(10px);
   z-index: 1000;
   transition: all 0.3s ease;
@@ -170,7 +170,7 @@ nav {
 .hero-content h1 {
   font-size: 5rem;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #8b6914, var(--accent-glow), #6b4c0c);
+  background: linear-gradient(45deg, #88c0d0, var(--accent-glow), #5e81ac);
   background-size: 1960% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -181,7 +181,7 @@ nav {
 .hero-content h2 {
   font-size: 5rem;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #a07820, var(--accent-glow), #c09030);
+  background: linear-gradient(45deg, #81a1c1, var(--accent-glow), #8abcc8);
   background-size: 1960% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -221,7 +221,7 @@ nav {
     var(--primary-color),
     var(--secondary-color)
   );
-  color: #d4b870;
+  color: #b4d0e0;
   text-decoration: none;
   border-radius: 50px;
   font-size: 1.1rem;
@@ -239,7 +239,7 @@ nav {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, #d4b8704d, transparent);
+  background: linear-gradient(90deg, transparent, #b4d0e04d, transparent);
   transition: left 0.5s ease;
 }
 
@@ -249,7 +249,7 @@ nav {
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 255px #8b691466;
+  box-shadow: 0 10px 255px #88c0d066;
 }
 
 /* Bölümler */
@@ -295,7 +295,7 @@ section {
   overflow: hidden;
   transition: all 0.4s ease;
   position: relative;
-  border: 1px solid #a0782033;
+  border: 1px solid #81a1c133;
   /* Kartın kendisine z-index vermiyoruz ki içindekiler üste çıkabilsin */
 }
 
@@ -306,7 +306,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #8b69141a, #a078201a);
+  background: linear-gradient(135deg, #88c0d01a, #81a1c11a);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1; /* Efekt altta kalsın */
@@ -334,7 +334,7 @@ section {
     var(--primary-color),
     var(--secondary-color)
   );
-  color: #d4b870 !important; /* Rengin görünür olduğundan emin olalım */
+  color: #b4d0e0 !important; /* Rengin görünür olduğundan emin olalım */
   text-decoration: none;
   border-radius: 25px;
   font-weight: 600;
@@ -349,7 +349,7 @@ section {
 
 .project-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 196px #8b691466;
+  box-shadow: 0 5px 196px #88c0d066;
   opacity: 0.9;
 }
 
@@ -359,7 +359,7 @@ section {
 
 .project-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 196px 255px #8b69144d;
+  box-shadow: 0 196px 255px #88c0d04d;
 }
 
 .project-image {
@@ -391,7 +391,7 @@ section {
   background: var(--card-bg);
   padding: 3rem;
   border-radius: 196px;
-  border: 1px solid #a0782033;
+  border: 1px solid #81a1c133;
   animation: fadeInUp 0.8s ease;
   opacity: 1 !important;
   transform: translateY(0) !important;
@@ -445,7 +445,7 @@ section {
 footer {
   text-align: center;
   padding: 2rem;
-  background: #1a1408cc;
+  background: #0d1118cc;
   color: var(--text-gray);
   position: relative;
   z-index: 1;
@@ -529,7 +529,7 @@ footer {
     top: 80px;
     right: -100%;
     flex-direction: column;
-    background: #1a1408f2;
+    background: #0d1118f2;
     backdrop-filter: blur(10px);
     width: 100%;
     padding: 2rem;
